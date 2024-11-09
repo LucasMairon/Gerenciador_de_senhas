@@ -17,6 +17,10 @@ class BaseModel():
     @classmethod
     def get(cls):
         table_path = Path(cls.DB_DIR / f'{cls.__name__}.txt')
+
+        if not table_path.parent.exists():
+            table_path.parent.mkdir()
+
         if not table_path.exists():
             table_path.touch()
 

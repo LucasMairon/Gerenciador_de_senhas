@@ -38,6 +38,9 @@ class FernetHasher():
     def archive_key(cls,key):
         file = 'key.key'
 
+        if not cls.KEY_DIR.exists():
+            cls.KEY_DIR.mkdir()
+
         while(Path(cls.KEY_DIR / file).exists()):
             file = f'key_{cls.get_random_string(length=5)}.key'
 
